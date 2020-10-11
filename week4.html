@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TITLE</title>
+    <link rel="stylesheet" type="text/css" href="" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- cdn for vue -->
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1 v-text="sitename"></h1>
+      </header>
+      <main>
+        <figure>
+          <img style = "height: 200px; width:200px;" v-bind:src="product.image" />
+        </figure>
+        <h2 v-text="product.title"></h2>
+        <p v-html="product.description"></p>
+        <p>Price: {{product.price}}</p>
+        <button @click= "addItem">
+            Add to Cart
+        </button>
+        </button>
+      </main>
+    </div>
+
+    <script type="text/javascript">
+      var webstore = new Vue({
+        el: "#app",
+        data: {
+          sitename: "Vue.js Pet Depot",
+          product: {
+            id: 1001,
+            title: "Cat food 25lb bag",
+            description:
+              "A 25 pound bag of <em>irresistible</em> " +
+              "organic goodness for your cat.",
+            price: 2000,
+            image:
+              "https://images-na.ssl-images-amazon.com/images/I/81asWIyOp%2BL._AC_SL1500_.jpg"
+            },
+            cart: [],
+          },
+
+          methods: {
+              addItem: function () {
+                  this.cart.push(this.product.id);
+              }
+        }
+      });
+    </script>
+    <!-- 'el' should be as it is, # is for id of the div -->
+  </body>
+</html>
